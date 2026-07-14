@@ -32,6 +32,7 @@ function loadGradeData(grade) {
   window.UNITS = data.UNITS;
   window.REVIEWS = data.REVIEWS;
   window.GROUP_NAMES = data.GROUP_NAMES;
+  buildTextLangSets();
   const sub = document.getElementById("app-sub");
   if (sub) sub.textContent = "Tiếng Anh " + (GRADE_LABELS[g] || g).toLowerCase() + " · Global Success";
   const badge = document.getElementById("grade-badge");
@@ -114,18 +115,27 @@ function pickVietnameseVoice() {
 
 // Xay tap tu vung tieng Anh / tieng Viet tu chinh du lieu bai hoc,
 // de nhan biet 1 dap an la tieng Anh hay tieng Viet truoc khi doc.
+// LUU Y: KHONG duoc chay o cap top-level luc file vua load, vi UNITS
+// luc do chua ton tai (UNITS chi duoc gan sau khi hoc sinh dang nhap
+// va loadGradeData() chay). Chay truc tiep o day se nem ReferenceError
+// va lam dung toan bo phan con lai cua app.js (ke ca dong dang ky
+// DOMContentLoaded o cuoi file), khien moi nut bam tren trang im lang.
 const ENGLISH_TEXT_SET = new Set();
 const VIETNAMESE_TEXT_SET = new Set();
-UNITS.forEach(u => {
-  [...u.core, ...u.ext].forEach(w => {
-    if (w.en) ENGLISH_TEXT_SET.add(w.en.trim().toLowerCase());
-    if (w.vi) VIETNAMESE_TEXT_SET.add(w.vi.trim().toLowerCase());
+function buildTextLangSets() {
+  ENGLISH_TEXT_SET.clear();
+  VIETNAMESE_TEXT_SET.clear();
+  UNITS.forEach(u => {
+    [...u.core, ...u.ext].forEach(w => {
+      if (w.en) ENGLISH_TEXT_SET.add(w.en.trim().toLowerCase());
+      if (w.vi) VIETNAMESE_TEXT_SET.add(w.vi.trim().toLowerCase());
+    });
+    u.patterns.forEach(p => {
+      if (p.en) ENGLISH_TEXT_SET.add(p.en.trim().toLowerCase());
+      if (p.vi) VIETNAMESE_TEXT_SET.add(p.vi.trim().toLowerCase());
+    });
   });
-  u.patterns.forEach(p => {
-    if (p.en) ENGLISH_TEXT_SET.add(p.en.trim().toLowerCase());
-    if (p.vi) VIETNAMESE_TEXT_SET.add(p.vi.trim().toLowerCase());
-  });
-});
+}
 
 function hasVietnameseDiacritics(s) {
   return /[\u00C0-\u1EF9]/.test(s);
@@ -297,6 +307,7 @@ function onLogout() {
 }
 
 function updateStampCount() {
+  if (!window.UNITS) return; // chua dang nhap / chua chon khoi lop thi bo qua
   const total = UNITS.length;
   let stamped = 0;
   UNITS.forEach(u => { if (getUnitProgress(u.id).stars > 0) stamped++; });
