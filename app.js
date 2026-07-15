@@ -32,7 +32,7 @@ function loadGradeData(grade) {
   window.UNITS = data.UNITS;
   window.REVIEWS = data.REVIEWS;
   window.GROUP_NAMES = data.GROUP_NAMES;
-  buildTextLangSets();
+  buildLanguageSets();
   const sub = document.getElementById("app-sub");
   if (sub) sub.textContent = "Tiếng Anh " + (GRADE_LABELS[g] || g).toLowerCase() + " · Global Success";
   const badge = document.getElementById("grade-badge");
@@ -115,14 +115,9 @@ function pickVietnameseVoice() {
 
 // Xay tap tu vung tieng Anh / tieng Viet tu chinh du lieu bai hoc,
 // de nhan biet 1 dap an la tieng Anh hay tieng Viet truoc khi doc.
-// LUU Y: KHONG duoc chay o cap top-level luc file vua load, vi UNITS
-// luc do chua ton tai (UNITS chi duoc gan sau khi hoc sinh dang nhap
-// va loadGradeData() chay). Chay truc tiep o day se nem ReferenceError
-// va lam dung toan bo phan con lai cua app.js (ke ca dong dang ky
-// DOMContentLoaded o cuoi file), khien moi nut bam tren trang im lang.
 const ENGLISH_TEXT_SET = new Set();
 const VIETNAMESE_TEXT_SET = new Set();
-function buildTextLangSets() {
+function buildLanguageSets() {
   ENGLISH_TEXT_SET.clear();
   VIETNAMESE_TEXT_SET.clear();
   UNITS.forEach(u => {
@@ -261,6 +256,7 @@ function init() {
     state.profile = p;
     state.progress = loadProgressForKey(p.key);
     goHome();
+    updateStampCount();
   } else {
     showScreen("screen-login");
   }
@@ -268,7 +264,6 @@ function init() {
   document.getElementById("nav-home").addEventListener("click", goHome);
   document.getElementById("nav-progress").addEventListener("click", goProgress);
   document.getElementById("logout-btn").addEventListener("click", onLogout);
-  updateStampCount();
 }
 
 function onLogin(e) {
@@ -307,7 +302,7 @@ function onLogout() {
 }
 
 function updateStampCount() {
-  if (!window.UNITS) return; // chua dang nhap / chua chon khoi lop thi bo qua
+  if (typeof UNITS === "undefined" || !UNITS) return;
   const total = UNITS.length;
   let stamped = 0;
   UNITS.forEach(u => { if (getUnitProgress(u.id).stars > 0) stamped++; });
