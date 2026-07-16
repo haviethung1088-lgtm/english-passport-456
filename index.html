@@ -131,10 +131,30 @@
     <div id="progress-list"></div>
   </div>
 
+  <!-- ===================== BAI TAP (Workbook) - LIST ===================== -->
+  <div class="screen" id="screen-exercises">
+    <div class="map-header">
+      <h1>📝 Bài tập bổ trợ</h1>
+      <div class="greeting">Trích từ Sách bài tập (Workbook) — chọn Unit để luyện</div>
+    </div>
+    <div id="exercises-list"></div>
+  </div>
+
+  <!-- ===================== BAI TAP (Workbook) - UNIT ===================== -->
+  <div class="screen" id="screen-exercise-unit">
+    <button class="back-btn" onclick="goExercises()" style="margin-bottom:14px;">←</button>
+    <div class="unit-hero">
+      <div class="icon">📝</div>
+      <h1 id="exercise-unit-title"></h1>
+    </div>
+    <div id="exercise-body"></div>
+  </div>
+
   <!-- ===================== BOTTOM NAV ===================== -->
   <div class="bottom-nav">
     <button class="nav-btn active" id="nav-home"><span class="ic">🗺️</span>Bản đồ</button>
     <button class="nav-btn" id="nav-progress"><span class="ic">🎟️</span>Tiến độ</button>
+    <button class="nav-btn" id="nav-exercises" style="display:none;"><span class="ic">📝</span>Bài tập</button>
   </div>
 
 </div>
@@ -142,6 +162,7 @@
 <script src="data-lop4.js"></script>
 <script src="data-lop5.js"></script>
 <script src="data-lop6.js"></script>
+<script src="practice-lop6.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
