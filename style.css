@@ -374,3 +374,55 @@ button {
 @media (max-width: 420px) {
   .card-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ===================== BAI TAP (Workbook exercises) ===================== */
+.exercise-unit-card {
+  background: var(--paper); border: 2px solid var(--line); border-radius: 18px;
+  padding: 16px 18px; margin-bottom: 12px; cursor: pointer; box-shadow: var(--shadow-soft);
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+.exercise-unit-card:active { transform: translateY(2px); }
+.exercise-unit-card .eu-title { font-family: 'Baloo 2'; font-size: 16.5px; color: var(--ink); }
+.exercise-unit-card .eu-meta { font-size: 13px; color: var(--ink-soft); margin-top: 3px; }
+.exercise-unit-card .eu-arrow { font-size: 20px; color: var(--sky); }
+
+.ex-block { background: var(--paper); border: 2px solid var(--line); border-radius: 16px; padding: 16px; margin-bottom: 16px; }
+.ex-instruction { font-weight: 800; color: var(--sky-deep); margin-bottom: 10px; font-size: 15px; }
+.ex-bank { display:flex; flex-wrap:wrap; gap:8px; margin-bottom: 12px; }
+.ex-bank span { background: var(--sky); color:#fff; border-radius: 999px; padding: 4px 12px; font-size: 13px; font-weight: 700; }
+.ex-passage { background:#F6F4FB; border-radius: 12px; padding: 12px 14px; margin-bottom: 12px; font-size: 14px; color: var(--ink); line-height:1.5; }
+.ex-item { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px dashed var(--line); }
+.ex-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.ex-prompt { font-size: 14.5px; color: var(--ink); margin-bottom: 8px; line-height: 1.5; }
+.ex-input-row { display:flex; gap:8px; align-items:center; flex-wrap: wrap; }
+.ex-input {
+  flex: 1; min-width: 140px; border: 2px solid var(--line); border-radius: 10px;
+  padding: 8px 12px; font-size: 14.5px; font-family: 'Nunito'; color: var(--ink);
+}
+.ex-input:focus { border-color: var(--sky); outline: none; }
+.ex-input.correct { border-color: #4CAF50; background: #F1FBF1; }
+.ex-input.wrong { border-color: #E85D45; background: #FDF1EF; }
+.ex-check-icon { font-size: 18px; min-width: 22px; text-align:center; }
+.ex-tf-row { display:flex; gap:10px; }
+.ex-tf-btn {
+  border: 2px solid var(--line); border-radius: 10px; padding: 7px 16px; font-weight: 800;
+  font-size: 13.5px; color: var(--ink-soft); background: var(--paper);
+}
+.ex-tf-btn.selected-true.correct, .ex-tf-btn.selected-false.correct { border-color:#4CAF50; color:#2E7D32; background:#F1FBF1; }
+.ex-tf-btn.selected-true.wrong, .ex-tf-btn.selected-false.wrong { border-color:#E85D45; color:#C0392B; background:#FDF1EF; }
+.ex-reorder-words { display:flex; flex-wrap:wrap; gap:8px; margin-bottom: 8px; }
+.ex-word-chip {
+  background: var(--sky); color:#fff; border-radius: 10px; padding: 7px 12px;
+  font-size: 14px; font-weight: 700; cursor: pointer; user-select: none;
+}
+.ex-word-chip.used { background: var(--line); color: var(--ink-soft); }
+.ex-reorder-answer {
+  min-height: 40px; border: 2px dashed var(--line); border-radius: 10px; padding: 8px 10px;
+  font-size: 14.5px; color: var(--ink); margin-bottom: 8px; line-height: 1.6;
+}
+.ex-answer-reveal { font-size: 13px; color: var(--ink-soft); margin-top: 6px; display:none; }
+.ex-check-all-btn { margin-top: 4px; }
+.ex-score-banner {
+  background: var(--sky); color:#fff; border-radius: 14px; padding: 12px 16px;
+  font-weight: 800; text-align:center; margin-bottom: 16px; font-size: 15px;
+}
