@@ -33,6 +33,11 @@ function loadGradeData(grade) {
   window.REVIEWS = data.REVIEWS;
   window.GROUP_NAMES = data.GROUP_NAMES;
   buildLanguageSets();
+  const exBtn = document.getElementById("nav-exercises");
+  if (exBtn) {
+    const hasPractice = window.PRACTICE_DATA && window.PRACTICE_DATA[g] && window.PRACTICE_DATA[g].length > 0;
+    exBtn.style.display = hasPractice ? "flex" : "none";
+  }
   const sub = document.getElementById("app-sub");
   if (sub) sub.textContent = "Tiếng Anh " + (GRADE_LABELS[g] || g).toLowerCase() + " · Global Success";
   const badge = document.getElementById("grade-badge");
@@ -263,6 +268,7 @@ function init() {
   document.getElementById("login-form").addEventListener("submit", onLogin);
   document.getElementById("nav-home").addEventListener("click", goHome);
   document.getElementById("nav-progress").addEventListener("click", goProgress);
+  document.getElementById("nav-exercises").addEventListener("click", goExercises);
   document.getElementById("logout-btn").addEventListener("click", onLogout);
 }
 
@@ -678,6 +684,208 @@ function renderProgress() {
   });
   document.getElementById("progress-summary").textContent =
     `T\u1ed5ng: ${totalStars} / ${UNITS.length * 3} sao`;
+}
+
+// ============================================================
+// BAI TAP (Workbook) - khu vuc rieng, tach biet voi ban do dao
+// ============================================================
+let currentExerciseGrade = null;
+
+function goExercises() {
+  const grade = state.profile ? Number(state.profile.grade) : null;
+  currentExerciseGrade = grade;
+  renderExercisesList();
+  showScreen("screen-exercises");
+  setBottomNav("exercises");
+}
+
+function renderExercisesList() {
+  const container = document.getElementById("exercises-list");
+  container.innerHTML = "";
+  const data = window.PRACTICE_DATA && window.PRACTICE_DATA[currentExerciseGrade];
+  if (!data || data.length === 0) {
+    container.innerHTML = '<div class="empty-note">Ch\u01b0a c\u00f3 b\u00e0i t\u1eadp cho kh\u1ed1i l\u1edbp n\u00e0y.</div>';
+    return;
+  }
+  data.forEach(u => {
+    const totalItems = u.exercises.reduce((sum, e) => sum + e.items.length, 0);
+    const card = document.createElement("div");
+    card.className = "exercise-unit-card";
+    card.innerHTML = `
+      <div>
+        <div class="eu-title">${u.titleVi}</div>
+        <div class="eu-meta">${u.exercises.length} d\u1ea1ng b\u00e0i \u00b7 ${totalItems} c\u00e2u</div>
+      </div>
+      <div class="eu-arrow">\u2192</div>
+    `;
+    card.addEventListener("click", () => openExerciseUnit(u.id));
+    container.appendChild(card);
+  });
+}
+
+function normalizeAnswer(s) {
+  return String(s || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[.,!?;:'"]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function openExerciseUnit(unitId) {
+  const data = window.PRACTICE_DATA[currentExerciseGrade];
+  const unit = data.find(u => u.id === unitId);
+  if (!unit) return;
+  document.getElementById("exercise-unit-title").textContent = unit.titleVi;
+  const body = document.getElementById("exercise-body");
+  body.innerHTML = "";
+  showScreen("screen-exercise-unit");
+
+  unit.exercises.forEach((ex, exIdx) => {
+    const block = document.createElement("div");
+    block.className = "ex-block";
+    let html = `<div class="ex-instruction">${ex.instruction}</div>`;
+
+    if (ex.bank) {
+      html += `<div class="ex-bank">${ex.bank.map(w => `<span>${w}</span>`).join("")}</div>`;
+    }
+    if (ex.passage) {
+      html += `<div class="ex-passage">${ex.passage}</div>`;
+    }
+
+    if (ex.type === "fill_blank") {
+      html += ex.items.map((it, i) => `
+        <div class="ex-item" data-answer="${escapeAttr(it.answer)}">
+          <div class="ex-prompt">${i + 1}. ${it.prompt}</div>
+          <div class="ex-input-row">
+            <input type="text" class="ex-input" placeholder="Nh\u1eadp c\u00e2u tr\u1ea3 l\u1eddi..." />
+            <span class="ex-check-icon"></span>
+          </div>
+        </div>
+      `).join("");
+    } else if (ex.type === "reorder") {
+      html += ex.items.map((it, i) => {
+        const shuffled = [...it.words].sort(() => Math.random() - 0.5);
+        return `
+        <div class="ex-item" data-answer="${escapeAttr(it.answer)}">
+          <div class="ex-prompt">${i + 1}. Ch\u1ea1m v\u00e0o c\u00e1c t\u1eeb theo \u0111\u00fang th\u1ee9 t\u1ef1:</div>
+          <div class="ex-reorder-answer" data-built=""></div>
+          <div class="ex-reorder-words">
+            ${shuffled.map(w => `<span class="ex-word-chip">${w}</span>`).join("")}
+          </div>
+          <span class="ex-check-icon"></span>
+        </div>
+      `;
+      }).join("");
+    } else if (ex.type === "true_false") {
+      html += ex.items.map((it, i) => `
+        <div class="ex-item" data-answer="${it.answer}">
+          <div class="ex-prompt">${i + 1}. ${it.statement}</div>
+          <div class="ex-tf-row">
+            <button class="ex-tf-btn" data-val="true">\u0110\u00fang</button>
+            <button class="ex-tf-btn" data-val="false">Sai</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    html += `<button class="btn-primary ex-check-all-btn">Ki\u1ec3m tra</button>`;
+    block.innerHTML = html;
+    body.appendChild(block);
+
+    // Wire reorder chip clicks
+    if (ex.type === "reorder") {
+      block.querySelectorAll(".ex-item").forEach(itemEl => {
+        const answerBox = itemEl.querySelector(".ex-reorder-answer");
+        itemEl.querySelectorAll(".ex-word-chip").forEach(chip => {
+          chip.addEventListener("click", () => {
+            if (chip.classList.contains("used")) return;
+            chip.classList.add("used");
+            const built = (answerBox.dataset.built ? answerBox.dataset.built + " " : "") + chip.textContent;
+            answerBox.dataset.built = built;
+            answerBox.textContent = built;
+          });
+        });
+        answerBox.addEventListener("click", () => {
+          answerBox.dataset.built = "";
+          answerBox.textContent = "";
+          itemEl.querySelectorAll(".ex-word-chip").forEach(c => c.classList.remove("used"));
+        });
+      });
+    }
+
+    // Wire true/false buttons
+    if (ex.type === "true_false") {
+      block.querySelectorAll(".ex-item").forEach(itemEl => {
+        itemEl.querySelectorAll(".ex-tf-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            itemEl.querySelectorAll(".ex-tf-btn").forEach(b => {
+              b.classList.remove("selected-true", "selected-false", "correct", "wrong");
+            });
+            btn.classList.add(btn.dataset.val === "true" ? "selected-true" : "selected-false");
+            itemEl.dataset.chosen = btn.dataset.val;
+          });
+        });
+      });
+    }
+
+    // Wire check-all button
+    const checkBtn = block.querySelector(".ex-check-all-btn");
+    checkBtn.addEventListener("click", () => checkExerciseBlock(block, ex.type));
+  });
+}
+
+function escapeAttr(s) {
+  return String(s).replace(/"/g, "&quot;");
+}
+
+function checkExerciseBlock(block, type) {
+  let correctCount = 0;
+  const items = block.querySelectorAll(".ex-item");
+  items.forEach(itemEl => {
+    if (type === "fill_blank") {
+      const input = itemEl.querySelector(".ex-input");
+      const icon = itemEl.querySelector(".ex-check-icon");
+      const answer = itemEl.dataset.answer;
+      const ok = normalizeAnswer(input.value) === normalizeAnswer(answer);
+      input.classList.remove("correct", "wrong");
+      input.classList.add(ok ? "correct" : "wrong");
+      icon.textContent = ok ? "\u2705" : "\u274c";
+      if (!ok) input.title = "\u0110\u00e1p \u00e1n: " + answer;
+      if (ok) correctCount++;
+    } else if (type === "reorder") {
+      const answerBox = itemEl.querySelector(".ex-reorder-answer");
+      const icon = itemEl.querySelector(".ex-check-icon");
+      const answer = itemEl.dataset.answer;
+      const ok = normalizeAnswer(answerBox.textContent) === normalizeAnswer(answer);
+      answerBox.style.borderColor = ok ? "#4CAF50" : "#E85D45";
+      icon.textContent = ok ? "\u2705" : "\u274c \u0110\u00e1p \u00e1n: " + answer;
+      if (ok) correctCount++;
+    } else if (type === "true_false") {
+      const chosen = itemEl.dataset.chosen;
+      const answer = itemEl.dataset.answer === "true";
+      const btns = itemEl.querySelectorAll(".ex-tf-btn");
+      const ok = chosen !== undefined && (chosen === "true") === answer;
+      btns.forEach(b => {
+        b.classList.remove("correct", "wrong");
+        const isAnswerBtn = (b.dataset.val === "true") === answer;
+        if (chosen !== undefined) {
+          if (b.dataset.val === chosen) b.classList.add(ok ? "correct" : "wrong");
+          if (!ok && isAnswerBtn) b.classList.add("correct");
+        }
+      });
+      if (ok) correctCount++;
+    }
+  });
+
+  let banner = block.querySelector(".ex-score-banner");
+  if (!banner) {
+    banner = document.createElement("div");
+    banner.className = "ex-score-banner";
+    block.insertBefore(banner, block.firstChild);
+  }
+  banner.textContent = `\u0110\u00fang ${correctCount} / ${items.length} c\u00e2u`;
+  if (correctCount === items.length) playCorrectSound();
 }
 
 document.addEventListener("DOMContentLoaded", init);
