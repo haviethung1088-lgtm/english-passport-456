@@ -1,6 +1,6 @@
 // ============================================================
 // LUYEN TAP LOP 6 - trich tu Sach bai tap (Workbook) Tieng Anh 6
-// Global Success, Tap Mot (Unit 1-6). Day la khu vuc rieng,
+// Global Success, Tap Mot + Tap Hai (Unit 1-12). Day la khu vuc rieng,
 // KHONG lien quan toi ban do dao / UNITS_6 hien co.
 // ============================================================
 
@@ -307,6 +307,295 @@ window.PRACTICE_DATA[6] = [
         { prompt: "The Danish ___ plates on their friends' doors at the New Year.", answer: "break" },
         { prompt: "Korean children wear a ___ at the New Year.", answer: "Hanbok" },
         { prompt: "The Korean elders give their ___ advice and some money.", answer: "children" }
+      ] }
+    ],
+  },
+  {
+    id: "u7", titleVi: "Unit 7: Truyền hình",
+    exercises: [
+    { type: "fill_blank",
+      instruction: "Chọn từ/cụm từ trong khung đúng với định nghĩa.",
+      bank: ["sports programme", "TV guide", "wildlife programme", "TV series", "educational", "viewer", "cartoon character", "studio"],
+      items: [
+        { prompt: "a room for making shows", answer: "studio" },
+        { prompt: "a programme about nature", answer: "wildlife programme" },
+        { prompt: "a book giving the time of TV programmes", answer: "TV guide" },
+        { prompt: "a person watching TV", answer: "viewer" },
+        { prompt: "an animated person/animal in a cartoon", answer: "cartoon character" },
+        { prompt: "a programme showing physical activities like swimming", answer: "sports programme" },
+        { prompt: "a word describing a programme that teaches people a lot of things", answer: "educational" },
+        { prompt: "a long film in short parts", answer: "TV series" }
+      ] },
+    { type: "fill_blank",
+      instruction: "Điền từ trong khung để hoàn thành đoạn văn về truyền hình cho trẻ em.",
+      bank: ["programmes", "world", "watching", "children", "meet", "studio"],
+      items: [
+        { prompt: "There are many TV channels for (1) ___.", answer: "children" },
+        { prompt: "They offer interesting (2) ___ for fun and learning.", answer: "programmes" },
+        { prompt: "When children are (3) ___ the programmes...", answer: "watching" },
+        { prompt: "...they can visit far-away lands, (4) ___ interesting people.", answer: "meet" },
+        { prompt: "...learn about the (5) ___ around them.", answer: "world" },
+        { prompt: "They can also become guests at the (8) ___ of a programme.", answer: "studio" }
+      ] },
+    { type: "fill_blank",
+      instruction: "Hoàn thành câu với and, but, hoặc so.",
+      items: [
+        { prompt: "My brother likes watching TV, ___ I like going out with my friends.", answer: "but" },
+        { prompt: "I want to work in television industry, ___ I'm learning hard.", answer: "so" },
+        { prompt: "The weather was bad, ___ they didn't keep their picnic plan.", answer: "so" },
+        { prompt: "The concert started late, ___ we waited to watch it.", answer: "but" },
+        { prompt: "You can watch Harry Potter on TV, ___ you can read it, too.", answer: "and" },
+        { prompt: "I watched Happy Feet, ___ I told it to my friends.", answer: "and" }
+      ] },
+    { type: "true_false",
+      instruction: "Đọc thông tin thú vị về truyền hình, đánh dấu Đúng/Sai.",
+      passage: "Philo Farnsworth, the inventor of television, did not allow his children to watch TV. Early television was in black and white. In 1969, over 600 million people watched the Moon landing. In 2005, Suresh Joachim watched TV non-stop for 69 hours.",
+      items: [
+        { answer: false, statement: "Philo Farnsworth has two children." },
+        { answer: true, statement: "When television first started, it was not in colour." },
+        { answer: false, statement: "Man first walked on the Moon 69 years ago." },
+        { answer: true, statement: "A man from Sri Lanka watched TV for 69 hours without stopping." }
+      ] }
+    ],
+  },
+  {
+    id: "u8", titleVi: "Unit 8: Thể thao và trò chơi",
+    exercises: [
+    { type: "fill_blank",
+      instruction: "Viết dạng quá khứ của động từ.",
+      items: [
+        { prompt: "read", answer: "read" },
+        { prompt: "write", answer: "wrote" },
+        { prompt: "wear", answer: "wore" },
+        { prompt: "begin", answer: "began" },
+        { prompt: "make", answer: "made" },
+        { prompt: "hear", answer: "heard" },
+        { prompt: "swim", answer: "swam" },
+        { prompt: "ride", answer: "rode" },
+        { prompt: "beat", answer: "beat" },
+        { prompt: "see", answer: "saw" },
+        { prompt: "speak", answer: "spoke" },
+        { prompt: "tell", answer: "told" },
+        { prompt: "buy", answer: "bought" },
+        { prompt: "hold", answer: "held" },
+        { prompt: "put", answer: "put" }
+      ] },
+    { type: "fill_blank",
+      instruction: "Sắp xếp từ/cụm từ thành câu hỏi.",
+      items: [
+        { prompt: "you / practise / table tennis / How often / do / playing", answer: "How often do you practise playing table tennis?" }
+      ] },
+    { type: "reorder",
+      instruction: "Sắp xếp thành câu hỏi đúng.",
+      items: [
+        { answer: "Did your team win the match last Sunday?", words: ["Did", "your team", "win", "the match", "last Sunday", "?"] },
+        { answer: "What time did you arrive at the stadium?", words: ["What time", "did", "you", "arrive", "at", "the stadium", "?"] },
+        { answer: "Does your family sometimes play games together?", words: ["Does", "your family", "sometimes", "play", "games", "together", "?"] }
+      ] },
+    { type: "fill_blank",
+      instruction: "Chia động từ đúng thì để hoàn thành đoạn văn về đội Tigers.",
+      items: [
+        { prompt: "The Tigers (1. play) ___ fewer matches than the Lions.", answer: "played" },
+        { prompt: "They (2. score) ___ more points.", answer: "scored" },
+        { prompt: "The Tigers (3. lose) ___ only five matches during the season.", answer: "lost" },
+        { prompt: "The Zebras (4. beat) ___ the Lions.", answer: "beat" },
+        { prompt: "The Zebras (5. take) ___ second place.", answer: "took" },
+        { prompt: "The Pandas (10. be) ___ at the bottom of the league.", answer: "were" }
+      ] },
+    { type: "fill_blank",
+      instruction: "Chọn đáp án đúng A/B/C.",
+      items: [
+        { prompt: "He (1) ___ 15 seasons in the NBA. (A. played  B. did  C. took)", answer: "A" },
+        { prompt: "Michael Jordan is the greatest basketball player (2) ___ all time. (A. in  B. on  C. of)", answer: "C" },
+        { prompt: "We (4) ___ try our best if we want to be successful. (A. could  B. should  C. may)", answer: "B" },
+        { prompt: "He is also a very (5) ___ person. (A. fine  B. nice  C. well)", answer: "B" }
+      ] }
+    ],
+  },
+  {
+    id: "u9", titleVi: "Unit 9: Các thành phố trên thế giới",
+    exercises: [
+    { type: "fill_blank",
+      instruction: "Nối thành phố với quốc gia (trả lời bằng chữ cái).",
+      bank: ["a. Thailand", "b. Sweden", "c. France", "d. the United Kingdom", "e. Australia"],
+      items: [
+        { prompt: "London", answer: "d" },
+        { prompt: "Sydney", answer: "e" },
+        { prompt: "Bangkok", answer: "a" },
+        { prompt: "Stockholm", answer: "b" },
+        { prompt: "Paris", answer: "c" }
+      ] },
+    { type: "fill_blank",
+      instruction: "Điền từ/cụm từ trong khung để hoàn thành câu.",
+      bank: ["city", "festivals", "night markets", "street food", "visit", "people", "buildings", "landmarks"],
+      items: [
+        { prompt: "Rio de Janeiro is an exciting city with a lot of ___.", answer: "festivals" },
+        { prompt: "My sister likes the tall and modern ___ of New York.", answer: "buildings" },
+        { prompt: "Kyoto is an ancient ___ in Japan.", answer: "city" },
+        { prompt: "Ho Chi Minh City is famous for its ___.", answer: "street food" },
+        { prompt: "Could you name some ___ in Paris?", answer: "landmarks" },
+        { prompt: "A quick way to ___ a big city is taking a hop-on hop-off bus.", answer: "visit" },
+        { prompt: "Most big cities in Viet Nam have ___.", answer: "night markets" },
+        { prompt: "I love the ___ of Manila. They're friendly.", answer: "people" }
+      ] },
+    { type: "fill_blank",
+      instruction: "Điền tính từ sở hữu phù hợp (my/his/her/our/its/their).",
+      bank: ["my (x2)", "his", "her", "our", "its", "their (x2)"],
+      items: [
+        { prompt: "(1) ___ house is number 14. (nhà của 'I')", answer: "my" },
+        { prompt: "I can touch some of (2) ___ branches. (của cây)", answer: "its" },
+        { prompt: "...from the window of (3) ___ room. (của 'I')", answer: "my" },
+        { prompt: "My sister and (5) ___ friends often sit under the tree. (của 'we')", answer: "our" },
+        { prompt: "...play (6) ___ favourite games. (của họ)", answer: "their" },
+        { prompt: "I sit on the swing that (7) ___ father made. (của 'I')", answer: "his" }
+      ] },
+    { type: "fill_blank",
+      instruction: "Điền từ trong khung để hoàn thành đoạn văn về Nha Trang.",
+      bank: ["swimming", "exciting", "tourists", "seafood", "enjoy", "famous"],
+      items: [
+        { prompt: "Nha Trang is a (1) ___ seaside city in central Viet Nam.", answer: "famous" },
+        { prompt: "It attracts a lot of (2) ___ from many countries.", answer: "tourists" },
+        { prompt: "...an (3) ___ atmosphere of a young, growing city.", answer: "exciting" },
+        { prompt: "...you can (4) ___ wonderful weather.", answer: "enjoy" },
+        { prompt: "It is so good for (5) ___ and sunbathing.", answer: "swimming" },
+        { prompt: "Nha Trang is also well-known for its delicious (6) ___.", answer: "seafood" }
+      ] },
+    { type: "reorder",
+      instruction: "Sắp xếp thành câu đúng cho tấm bưu thiếp.",
+      items: [
+        { answer: "We're having a great time here in Cambodia!", words: ["We're", "having", "a", "great", "time", "here", "in Cambodia", "!"] },
+        { answer: "The weather is lovely.", words: ["The", "weather", "is", "lovely", "."] },
+        { answer: "The food is good.", words: ["The", "food", "is", "good", "."] },
+        { answer: "The local people are friendly.", words: ["The", "local", "people", "are", "friendly", "."] }
+      ] }
+    ],
+  },
+  {
+    id: "u10", titleVi: "Unit 10: Ngôi nhà tương lai",
+    exercises: [
+    { type: "fill_blank",
+      instruction: "Tìm từ khác loại (trả lời A/B/C/D).",
+      items: [
+        { prompt: "A. apartment   B. house   C. cottage   D. factory", answer: "D" },
+        { prompt: "A. kitchen   B. window   C. bedroom   D. living room", answer: "B" },
+        { prompt: "A. computer   B. dishwasher   C. housework   D. washing machine", answer: "C" },
+        { prompt: "A. city   B. building   C. village   D. countryside", answer: "B" }
+      ] },
+    { type: "fill_blank",
+      instruction: "Điền will hoặc won't vào hội thoại.",
+      items: [
+        { prompt: "A: What would you like to drink?  B: I ___ have a lemonade, please.", answer: "will" },
+        { prompt: "A: Linda can't see you until 4.  B: Oh, I ___ wait.", answer: "will" },
+        { prompt: "A: I'm worried about my exam.  B: Don't worry. You ___ pass.", answer: "will" },
+        { prompt: "A: That dog is dangerous.  B: Don't worry. It ___ hurt you.", answer: "won't" },
+        { prompt: "A: It's cold in this room.  B: Is it? I ___ turn on the heater.", answer: "will" }
+      ] },
+    { type: "fill_blank",
+      instruction: "Chọn might/must/should/has to phù hợp trong ngoặc.",
+      items: [
+        { prompt: "Linh (might/must) be there on time, I guess.", answer: "might" },
+        { prompt: "He practises running every morning. I think he (has to/might) become a professional runner.", answer: "might" },
+        { prompt: "Her family (should/might) move to the city, but I'm still not sure.", answer: "might" },
+        { prompt: "We (might/must) find aliens on Earth one day, but I'm sure they will not speak our language.", answer: "might" }
+      ] },
+    { type: "fill_blank",
+      instruction: "Điền từ trong khung để hoàn thành đoạn văn về căn hộ mơ ước.",
+      bank: ["have", "contact", "enjoy", "won't", "four"],
+      items: [
+        { prompt: "There will be (1) ___ rooms in it.", answer: "four" },
+        { prompt: "I'll (2) ___ a big TV and a DVD player.", answer: "have" },
+        { prompt: "They'll help me to relax and (3) ___ life.", answer: "enjoy" },
+        { prompt: "I'll have a laptop to (4) ___ with my friends.", answer: "contact" },
+        { prompt: "...there (5) ___ be any neighbours.", answer: "won't" }
+      ] },
+    { type: "true_false",
+      instruction: "Đọc đoạn văn về ngôi nhà tương lai, chọn ý KHÔNG đúng cho mỗi câu hỏi (trả lời true nếu đáp án là robots giúp việc nhà, false nếu là máy tính).",
+      passage: "In the future, robots will help us cook and wash clothes. We won't use computers — we'll have special remote control units. We won't have TVs or CD players; watches will play music, take pictures and tell the time. Cars will use energy from air, water and plants instead of gas.",
+      items: [
+        { answer: true, statement: "Chúng ta sẽ không dùng cookers, dishwashers, washing machines vì robot giúp ta." },
+        { answer: false, statement: "Chúng ta sẽ vẫn dùng máy tính như bình thường." },
+        { answer: true, statement: "Đồng hồ tương lai có thể phát nhạc, chụp ảnh và báo giờ." },
+        { answer: false, statement: "Ô tô tương lai vẫn dùng xăng như hiện nay." }
+      ] }
+    ],
+  },
+  {
+    id: "u11", titleVi: "Unit 11: Thế giới xanh hơn",
+    exercises: [
+    { type: "fill_blank",
+      instruction: "Điền a/an/the phù hợp.",
+      items: [
+        { prompt: "We have ___ cat, ___ dog, and ___ goldfish as pets. (mạo từ đầu)", answer: "a" },
+        { prompt: "___ Earth is the third planet from ___ Sun. (mạo từ đầu)", answer: "the" },
+        { prompt: "My grandfather is ___ astronaut. (a/an)", answer: "an" },
+        { prompt: "Do you live in ___ house or ___ flat? (mạo từ đầu)", answer: "a" },
+        { prompt: "Do you have ___ umbrella in your car? (a/an)", answer: "an" }
+      ] },
+    { type: "fill_blank",
+      instruction: "Chia động từ trong ngoặc đúng dạng (câu điều kiện loại 1).",
+      items: [
+        { prompt: "If you (1. take) ___ a shower instead of a bath, you (2. save) ___ water.", answer: "take" },
+        { prompt: "If you cycle more, there (4. be) ___ less air pollution.", answer: "will be" },
+        { prompt: "If you (5. cycle) ___, you (6. produce) ___ fumes. (điền động từ produce)", answer: "won't produce" },
+        { prompt: "If people (9. plant) ___ more trees, there (10. be) ___ floods. (điền động từ be)", answer: "won't be" }
+      ] },
+    { type: "reorder",
+      instruction: "Viết câu điều kiện loại 1 đúng.",
+      items: [
+        { answer: "If we burn rubbish, it will produce harmful smoke.", words: ["If", "we", "burn", "rubbish,", "it", "will", "produce", "harmful smoke", "."] },
+        { answer: "If we reuse bottles, we will save a lot of money.", words: ["If", "we", "reuse", "bottles,", "we", "will", "save", "a lot of money", "."] },
+        { answer: "If we use recycled paper, we will save trees.", words: ["If", "we", "use", "recycled paper,", "we", "will", "save", "trees", "."] }
+      ] },
+    { type: "fill_blank",
+      instruction: "Điền từ đúng để hoàn thành đoạn văn 'Air Quality'.",
+      items: [
+        { prompt: "If they don't breathe, they (1) ___ die. (A. will  B. are  C. must)", answer: "A" },
+        { prompt: "If they breathe (2) ___ air, they will have breathing problems. (A. clean  B. fresh  C. dirty)", answer: "C" },
+        { prompt: "Plants and animals need (4) ___ air too. (A. clean  B. safe  C. dirty)", answer: "A" },
+        { prompt: "Dirty air is called ''(7) ___ air''. (A. pollute  B. polluted  C. polluting)", answer: "B" }
+      ] }
+    ],
+  },
+  {
+    id: "u12", titleVi: "Unit 12: Người máy",
+    exercises: [
+    { type: "fill_blank",
+      instruction: "Ghép động từ với cụm từ phù hợp (trả lời bằng chữ cái).",
+      bank: ["a. as a guard", "b. my toys away", "c. broken machines", "d. the clothes", "e. the dishes"],
+      items: [
+        { prompt: "do", answer: "e" },
+        { prompt: "repair", answer: "c" },
+        { prompt: "iron", answer: "d" },
+        { prompt: "work", answer: "a" },
+        { prompt: "put", answer: "b" }
+      ] },
+    { type: "fill_blank",
+      instruction: "Chia tính từ trong ngoặc đúng dạng so sánh hơn/nhất.",
+      items: [
+        { prompt: "My sister thinks she's (smart) ___ than me.", answer: "smarter" },
+        { prompt: "What is the (wet) ___ month of the year in Viet Nam?", answer: "wettest" },
+        { prompt: "V100 is the (strong) ___ robot in our factory.", answer: "strongest" },
+        { prompt: "My mum's robot is not very fast. She wants a (fast) ___ one.", answer: "faster" },
+        { prompt: "Venus is the (hot) ___ in the solar system.", answer: "hottest" },
+        { prompt: "Mary is the (nice) ___ person that I know.", answer: "nicest" }
+      ] },
+    { type: "true_false",
+      instruction: "Đọc phỏng vấn với chuyên gia robot, đánh dấu Đúng/Sai.",
+      passage: "Dr Brown: Robots can do a lot of things now but can't understand our feelings. Home robots can work as guards and look after babies. They can't play football but can drive a car only in streets with few vehicles. The smartest robots can understand and speak more than 30 languages.",
+      items: [
+        { answer: false, statement: "Robots can understand our feelings." },
+        { answer: true, statement: "Home robots can do a lot of things in our houses." },
+        { answer: true, statement: "Robots cannot play football." },
+        { answer: false, statement: "Robots can drive a car in every street." },
+        { answer: true, statement: "Robots can talk to people." }
+      ] },
+    { type: "fill_blank",
+      instruction: "Chọn đáp án đúng A/B/C/D cho đoạn blog về robot.",
+      items: [
+        { prompt: "Scientists have worked (1) ___ them. (A. on  B. in  C. at  D. to)", answer: "A" },
+        { prompt: "It has cameras (2) ___ its eyes. (A. on  B. into  C. in  D. to)", answer: "C" },
+        { prompt: "It can make some (3) ___ with its face. (A. looks  B. feelings  C. expressions  D. shows)", answer: "C" },
+        { prompt: "It can work as a guard and (4) ___ messages to your phone. (A. bring  B. take  C. pass  D. send)", answer: "D" }
       ] }
     ],
   }
